@@ -15,6 +15,7 @@ model Users {
   name      String
   email     String
   password  String
+  role      String    @default("guest")
   createdAt DateTime  @default(now())
   updatedAt DateTime?
   posts     Posts[]

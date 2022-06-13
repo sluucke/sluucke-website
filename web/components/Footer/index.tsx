@@ -17,6 +17,9 @@ import {
 } from './styles';
 
 const Footer = () => {
+  const backToTop = () => {
+    window.scroll({ top: 0, behavior: 'smooth' });
+  };
   return (
     <FooterContainer>
       <FooterGridContainer>
@@ -49,7 +52,7 @@ const Footer = () => {
           </FooterLinks>
         </FooterLinksContainer>
         <RightColumnContainer>
-          <BacktotopButton>
+          <BacktotopButton onClick={backToTop}>
             <svg
               width="16"
               height="38"

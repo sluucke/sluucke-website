@@ -14,6 +14,8 @@ export const FooterContainer = styled.footer`
 export const FooterGridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  padding-top: 100px;
+  padding-bottom: 50px;
   grid-gap: 20px;
   width: 100%;
   @media (min-width: 768px) {

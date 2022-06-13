@@ -7,12 +7,17 @@ export class CreateUserController {
     const { name, email, password } = request.body;
     const userRepository = new PrismaUserRepository();
     const createUserUseCase = new CreateUserUseCase(userRepository);
-    const user = await createUserUseCase.execute({
-      name,
-      email,
-      password,
-    });
 
-    return response.json({ message: 'Created user', user });
+    try {
+      const user = await createUserUseCase.execute({
+        name,
+        email,
+        password,
+      });
+
+      return response.json({ message: 'Created user with success', user });
+    } catch (err: any) {
+      throw Error(err);
+    }
   }
 }

@@ -6,7 +6,11 @@ export class FetchAllPostsController {
   async handle(request: Request, response: Response) {
     const blogRepository = new PrismaBlogRepository();
     const fetchAllPostsUseCase = new FetchAllPostsUseCase(blogRepository);
-    const posts = await fetchAllPostsUseCase.execute();
-    return response.status(200).json(posts);
+    try {
+      const posts = await fetchAllPostsUseCase.execute();
+      return response.status(200).json(posts);
+    } catch (err: any) {
+      throw Error(err);
+    }
   }
 }

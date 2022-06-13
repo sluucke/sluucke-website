@@ -19,14 +19,18 @@ export class CreatePostController {
       request.body;
     const blogRepository = new PrismaBlogRepository();
     const createPostUseCase = new CreatePostUseCase(blogRepository);
-    const post = await createPostUseCase.execute({
-      slug,
-      title,
-      content,
-      short_description,
-      time_to_read,
-      authorId,
-    });
-    return response.status(201).json(post);
+    try {
+      const post = await createPostUseCase.execute({
+        slug,
+        title,
+        content,
+        short_description,
+        time_to_read,
+        authorId,
+      });
+      return response.status(201).json(post);
+    } catch (err: any) {
+      throw new Error(err);
+    }
   }
 }
