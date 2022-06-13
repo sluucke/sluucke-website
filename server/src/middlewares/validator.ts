@@ -44,7 +44,7 @@ export function validate(schema: any) {
       response.status(400).json({ type: 'error', message: errors });
     }
 
-    return next();
+    next();
   };
   return validation;
 }

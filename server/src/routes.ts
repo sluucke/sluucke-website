@@ -3,9 +3,10 @@ import {
   validationAuthenticateUser,
   validationCreatePost,
 } from './lib/validations';
-import { checkPermissions } from './middlewares/acl';
+import { AclMiddleware } from './middlewares/acl';
 import { ensureAuthenticated } from './middlewares/ensureAuthenticated';
 import { validate } from './middlewares/validator';
+import { PrismaUserRepository } from './repositories/user/prisma/prisma-user-repository';
 import {
   CreatePostController,
   FetchAllPostsController,
@@ -18,11 +19,14 @@ import {
 
 const router = Router();
 
+const prismaUserRepository = new PrismaUserRepository();
+const acl = new AclMiddleware(prismaUserRepository);
+
 // POSTS
 router.post(
   '/posts',
   ensureAuthenticated(),
-  checkPermissions,
+  acl.checkPermissions,
   validate(validationCreatePost),
   new CreatePostController().handle
 );

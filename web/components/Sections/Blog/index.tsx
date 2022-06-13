@@ -1,7 +1,19 @@
+import { useEffect, useState } from 'react';
+import { api } from '../../../services/api';
 import BlogPost from './Post/BlogPost';
 import { BlogContainer, Container, Text, Title } from './styles';
 
 const Blog = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await api.get('/posts').then((response) => {
+        setPosts(response.data);
+      });
+    };
+    fetchData();
+    console.log(posts);
+  }, []);
   return (
     <Container>
       <Text>blog</Text>

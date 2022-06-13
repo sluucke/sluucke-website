@@ -15,10 +15,11 @@ interface CreatePostUseCaseRequest extends Request {
 
 export class CreatePostController {
   async handle(request: CreatePostUseCaseRequest, response: Response) {
-    const { slug, title, content, short_description, time_to_read, authorId } =
+    const { slug, title, content, short_description, time_to_read } =
       request.body;
     const blogRepository = new PrismaBlogRepository();
     const createPostUseCase = new CreatePostUseCase(blogRepository);
+    const authorId = request.user.id;
     try {
       const post = await createPostUseCase.execute({
         slug,
