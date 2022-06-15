@@ -6,6 +6,7 @@ export interface PostRepositoryDTO {
   content: string;
   short_description: string;
   time_to_read: string;
+  image: string;
   authorId: number;
 }
 

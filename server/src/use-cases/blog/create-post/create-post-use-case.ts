@@ -13,6 +13,7 @@ export class CreatePostUseCase {
     short_description,
     time_to_read,
     authorId,
+    image,
     slug
   }: PostRepositoryDTO): Promise<Posts> {
     const post = await this.postRepository.create({
@@ -20,6 +21,7 @@ export class CreatePostUseCase {
       content,
       short_description,
       slug,
+      image,
       time_to_read,
       authorId,
     });

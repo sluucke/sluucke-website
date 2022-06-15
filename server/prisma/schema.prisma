@@ -28,6 +28,7 @@ model Posts {
   content           String
   short_description String
   time_to_read      String
+  image             String    @default("")
   likes             Int       @default(0)
   author            Users     @relation(fields: [authorId], references: [id])
   authorId          Int

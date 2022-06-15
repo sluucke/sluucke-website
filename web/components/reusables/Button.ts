@@ -26,11 +26,11 @@ export const Button = styled.button<ButtonProps>`
   }
   #arrow {
     margin-left: -5px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease;
   }
   #arrow path {
     transform: translateX(0px);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease;
     fill: ${({ theme, color }) =>
       color == 'black' ? theme.colors.black : theme.colors.white};
   }
@@ -38,7 +38,8 @@ export const Button = styled.button<ButtonProps>`
     overflow: hidden;
     width: 0;
     white-space: nowrap;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    transition-delay: .1,5s;
   }
   &:hover {
     #arrow {

@@ -1,22 +1,40 @@
-import Link from 'next/link';
-import { BLOG_MOCK } from '..';
-import { Button } from '../../../../styles/components/Button';
-import { BlogDescription, BlogImage, BlogTitle, PostContainer } from './styles';
+import Link from "next/link";
+import { Post } from "../../../../interfaces/Post";
+import { Button } from "../../../reusables/Button";
+import {
+  BlogDescription,
+  BlogImage,
+  BlogTitle,
+  PostContainer,
+  BlogTimeToRead,
+} from "./styles";
+import { FiClock } from "react-icons/fi";
+import { TooltipBox, TooltipCard, TooltipText } from "../../../reusables/Tooltip";
 
 const BlogPost = ({
-  title,
-  date,
-  short_description,
-  link,
   image,
-}: typeof BLOG_MOCK[0]) => {
+  title,
+  short_description,
+  slug,
+  time_to_read,
+}: Post) => {
   return (
     <PostContainer>
       <BlogImage src={image} alt="Post Image" draggable={false} />
       <BlogTitle>{title}</BlogTitle>
       <BlogDescription>{short_description}</BlogDescription>
+      <BlogTimeToRead>
+        <TooltipCard>
+          <TooltipText>
+            <FiClock /> {time_to_read}
+          </TooltipText>
+          <TooltipBox>
+            <p>Time to read this post</p>
+          </TooltipBox>
+        </TooltipCard>
+      </BlogTimeToRead>
       <Button color="black">
-        <Link href={link} passHref>
+        <Link href={`/blog/post/${slug}`} passHref>
           <a>
             <div>
               <svg

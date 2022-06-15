@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
 const validationRegex: any = {
   email: {
-    regex: '^[a-zA-Z-0-9]+@[a-zA-Z-0-9]+\\.[a-zA-Z-0-9]+$',
+    regex: "^[a-zA-Z-0-9]+@[a-zA-Z-0-9]+\\.[a-zA-Z-0-9]+$",
   },
 };
 
@@ -41,10 +41,10 @@ export function validate(schema: any) {
     });
 
     if (errors.length) {
-      response.status(400).json({ type: 'error', message: errors });
+      return response.status(400).json({ type: "error", message: errors });
     }
 
-    next();
+    return next();
   };
   return validation;
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '../../../../styles/components/Button';
+import { Button } from '../../../reusables/Button';
 import {
   WorkCardContainer,
   WorkDescription,
