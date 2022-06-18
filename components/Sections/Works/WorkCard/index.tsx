@@ -1,27 +1,38 @@
-import Link from 'next/link';
-import { Portfolio } from '../../../../interfaces/Portfolio';
-import { Button } from '../../../reusables/Button';
-import {
-  WorkCardContainer,
-  WorkDescription,
-  WorkTitle,
-} from './styles';
+import useOnScreen from '@/utils/useOnScreen'
+import Link from 'next/link'
+import { useRef } from 'react'
+import { Portfolio } from '../../../../interfaces/Portfolio'
+import { Button } from '../../../reusables/Button'
+import { WorkCardContainer, WorkDescription, WorkTitle } from './styles'
 
 interface Work {
-  title: string;
-  description: string;
-  image?: string;
-  link: string;
-  mainColor: string;
+  title: string
+  description: string
+  image?: string
+  link: string
+  mainColor: string
 }
 
 interface WorkCardProps {
-  work: Portfolio;
+  work: Portfolio
+  animation?: boolean
+  animationDelay?: string
 }
 
-const WorkCard = ({ work }: WorkCardProps) => {
+const WorkCard = ({
+  work,
+  animationDelay = '-50px',
+  animation = true,
+}: WorkCardProps) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isContainerVisible = useOnScreen(containerRef, animationDelay)
   return (
-    <WorkCardContainer mainColor={work.mainColor}>
+    <WorkCardContainer
+      ref={containerRef}
+      isVisible={isContainerVisible}
+      animation={animation}
+      mainColor={work.mainColor}
+    >
       <WorkTitle>{work.title}</WorkTitle>
       <WorkDescription>{work.description}</WorkDescription>
       <Button color="white">
@@ -47,7 +58,7 @@ const WorkCard = ({ work }: WorkCardProps) => {
         </Link>
       </Button>
     </WorkCardContainer>
-  );
-};
+  )
+}
 
-export default WorkCard;
+export default WorkCard

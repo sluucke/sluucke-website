@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavPopUp = styled.nav`
   z-index: 999;
@@ -44,7 +44,7 @@ export const NavPopUp = styled.nav`
       opacity: 1;
     }
   }
-`;
+`
 
 export const NavLogo = styled.div`
   position: fixed;
@@ -56,7 +56,7 @@ export const NavLogo = styled.div`
   @media (min-width: 768px) {
     left: 40px;
   }
-`;
+`
 
 export const NavButtons = styled.div`
   position: fixed;
@@ -67,13 +67,13 @@ export const NavButtons = styled.div`
   @media (min-width: 768px) {
     right: 40px;
   }
-`;
+`
 
 export const NavButton = styled.div`
   border: none;
   z-index: 9999;
   cursor: pointer;
-`;
+`
 
 export const NavBurger = styled.div`
   display: flex;
@@ -86,7 +86,7 @@ export const NavBurger = styled.div`
     margin-bottom: 5px;
     transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-`;
+`
 export const BurgerButton = styled.div`
   &:hover {
     span:nth-child(1) {
@@ -104,4 +104,6 @@ export const BurgerButton = styled.div`
       transform: translateX(-5px) scaleX(0);
     }
   }
-`;
+`
+
+

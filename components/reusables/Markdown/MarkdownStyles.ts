@@ -88,4 +88,11 @@ export const MarkdownStyles = styled(ReactMarkdown)`
   & a:hover {
     text-decoration: underline;
   }
+
+  & code {
+    padding: 0 2px;
+    border-radius: 2px;
+    background-color: #000;
+    color: #fff;
+  }
 `

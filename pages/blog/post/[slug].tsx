@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next'
-import React from 'react'
-import Header from '../../../components/Header'
-import { Post } from '../../../interfaces/Post'
-import PostsService from '../../../services/PostsService'
+import React, { useEffect, useRef } from 'react'
+import Header from '@/components/Header'
+import { Post } from '@/interfaces/Post'
+import PostsService from '@/services/PostsService'
 import {
   PostContainer,
   PostInfo,
@@ -11,18 +11,35 @@ import {
   PostDescription,
   PostAuthor,
   PostDate,
-} from './styles'
-import { MarkdownStyles as ReactMarkdown } from '../../../components/reusables/Markdown/MarkdownStyles'
-import { MarkdownComponents } from '../../../components/reusables/Markdown/MarkdownSyntaxHighlight'
+} from '@/styles/pages/blog/post'
+import { MarkdownStyles as ReactMarkdown } from '@/components/reusables/Markdown/MarkdownStyles'
+import { MarkdownComponents } from '@/components/reusables/Markdown/MarkdownSyntaxHighlight'
+import Footer from '@/components/Footer'
 
 interface PostProps {
   post: Post
 }
 export default function BlogPost({ post }: PostProps) {
+  const postContainer = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const animate = async () => {
+      if (postContainer.current) {
+        const scrollReveal = (await import('scrollreveal')).default
+        scrollReveal().reveal(postContainer.current, {
+          duration: 1000,
+          easing: 'ease-in-out',
+          delay: 500,
+          reset: false,
+        })
+      }
+    }
+    animate()
+  })
   return (
     <>
-      <Header />
-      <PostContainer>
+      <Header title={`${post.title} | David William`} />
+      <PostContainer ref={postContainer}>
         <PostInfo>
           <PostImage src={post.image} />
           <PostTitle>{post.title}</PostTitle>
@@ -39,6 +56,7 @@ export default function BlogPost({ post }: PostProps) {
           {post.content}
         </ReactMarkdown>
       </PostContainer>
+      <Footer />
     </>
   )
 }

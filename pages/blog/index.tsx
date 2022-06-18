@@ -1,13 +1,13 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import Header from '../../components/Header'
-import { Text } from '../../components/reusables/Text'
-import { Title } from '../../components/reusables/Title'
-import BlogPost from '../../components/Sections/Blog/Post/BlogPost'
-import { BlogContainer } from './styles'
-import { Post } from '../../interfaces/Post'
-import { Container } from '../../components/reusables/Container'
-import PostsService from '../../services/PostsService'
+import Header from '@/components/Header'
+import { Text } from '@/components/reusables/Text'
+import { Title } from '@/components/reusables/Title'
+import BlogPost from '@/components/Sections/Blog/Post/BlogPost'
+import { BlogContainer } from '@/styles/pages/blog'
+import { Post } from '@/interfaces/Post'
+import { Container } from '@/components/reusables/Container'
+import PostsService from '@/services/PostsService'
 
 interface BlogProps {
   posts: Post[]
@@ -16,7 +16,7 @@ interface BlogProps {
 export default function Blog({ posts }: BlogProps) {
   return (
     <>
-      <Header />
+      <Header title="Blog | David William" />
       <Container as="main">
         <Text>Welcome!</Text>
         <Title>My blog posts</Title>

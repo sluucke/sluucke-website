@@ -11,15 +11,15 @@ import PortfolioService from '../services/PortfolioService'
 import PostsService from '../services/PostsService'
 
 interface HomeProps {
-  posts: Post[],
+  posts: Post[]
   portfolio: Portfolio[]
 }
 const Home: NextPage<HomeProps> = ({ posts, portfolio }) => {
   return (
     <>
-      <Header />
+      <Header title="DW | David William - Full Stack Developer" />
       <InitialContent />
-      <FeaturedWorks portfolio={portfolio}/>
+      <FeaturedWorks portfolio={portfolio} />
       <About />
       <Blog posts={posts} />
       <Footer />
@@ -30,8 +30,8 @@ const Home: NextPage<HomeProps> = ({ posts, portfolio }) => {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   return {
     props: {
-      posts: await PostsService.getAllPosts(), 
-      portfolio: await PortfolioService.getAll(),
+      posts: await PostsService.getAllPosts(),
+      portfolio: PortfolioService.getAll(),
     },
   }
 }

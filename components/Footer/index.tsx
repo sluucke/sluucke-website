@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { BsArrow90DegUp } from 'react-icons/bs';
-import { FiArrowUp } from 'react-icons/fi';
+import Link from 'next/link'
+import { BsArrow90DegUp } from 'react-icons/bs'
+import { FiArrowUp } from 'react-icons/fi'
 import {
   BacktotopButton,
   FooterContainer,
@@ -14,18 +14,18 @@ import {
   MadeByText,
   RightColumnContainer,
   SocialsTitle,
-} from './styles';
+} from './styles'
 
 const Footer = () => {
   const backToTop = () => {
-    window.scroll({ top: 0, behavior: 'smooth' });
-  };
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }
   return (
     <FooterContainer>
       <FooterGridContainer>
         <div>
           <FooterTitle>{'Like it my job? Let’s talk'}</FooterTitle>
-          <FooterText>david.william@gmail.com</FooterText>
+          <FooterText>sluuckejoohn@gmail.com</FooterText>
         </div>
         <FooterLinksContainer>
           <FooterSocials>
@@ -33,20 +33,22 @@ const Footer = () => {
             <ul>
               {SOCIALS_LINK_MOCK.map((social, index) => (
                 <li key={String(index + 1)}>
-                  <a href={social.link}>{social.name}</a>
+                  <a target="_blank" rel="noreferrer" href={social.link}>
+                    {social.name}
+                  </a>
                 </li>
               ))}
             </ul>
           </FooterSocials>
           <FooterLinks>
             <FooterLinkTitle>Navigation</FooterLinkTitle>
-            <Link href="/">
+            <Link href="/" passHref>
               <a>Home</a>
             </Link>
-            <Link href="/blog">
+            <Link href="/blog" passHref>
               <a>Blog</a>
             </Link>
-            <Link href="/works">
+            <Link href="/portfolio" passHref>
               <a>Portfolio</a>
             </Link>
           </FooterLinks>
@@ -72,14 +74,14 @@ const Footer = () => {
       </FooterGridContainer>
       <MadeByText>Made by David W.</MadeByText>
     </FooterContainer>
-  );
-};
+  )
+}
 
 const SOCIALS_LINK_MOCK = [
   {
     id: 1,
     name: 'Instagram',
-    link: 'https://www.instagram.com/david.william/',
+    link: 'https://www.instagram.com/sluucke',
     icon: 'instagram',
   },
   {
@@ -94,6 +96,6 @@ const SOCIALS_LINK_MOCK = [
     link: 'https://github.com/sluucke',
     icon: 'github',
   },
-];
+]
 
-export default Footer;
+export default Footer

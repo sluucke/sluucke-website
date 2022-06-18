@@ -4,6 +4,7 @@ import { BsArrowRight } from 'react-icons/bs'
 import { useEffect, useRef } from 'react'
 // @ts-ignore
 import CircleType from 'circletype'
+import Link from 'next/link'
 
 const InitialContent = () => {
   const circleInstance = useRef<HTMLParagraphElement>(null)
@@ -70,16 +71,18 @@ const InitialContent = () => {
           <Text ref={subtitleRef}>Full Stack developer</Text>
         </div>
         <div className="works-container">
-          <Button>
-            <p ref={circleInstance}>
-              VIEW WORKS&nbsp;VIEW WORKS&nbsp;VIEW WORKS&nbsp;VIEW WORKS
-            </p>
-            <BsArrowRight />
-          </Button>
+          <Link href="/portfolio">
+            <Button>
+              <p ref={circleInstance}>
+                VIEW WORKS&nbsp;VIEW WORKS&nbsp;VIEW WORKS&nbsp;VIEW WORKS
+              </p>
+              <BsArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
       <ContactContainer>
-        <p>david@dfery.com</p>
+        <p>sluuckejoohn@gmail.com</p>
         <div className="icons">
           <a
             className="social-link"
@@ -99,7 +102,7 @@ const InitialContent = () => {
           </a>
           <a
             className="social-link"
-            href="mailto:david@dfery.com"
+            href="mailto:sluuckejoohn@gmail.com"
             target="_blank"
             rel="noreferrer"
           >

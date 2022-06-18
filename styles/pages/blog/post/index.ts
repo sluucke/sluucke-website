@@ -4,7 +4,7 @@ export const PostContainer = styled.main`
   flex-direction: column;
   justify-content: center;
   width: 90%;
-
+  
   padding: 0;
   margin: 0 auto;
   @media (min-width: 768px) {
@@ -12,6 +12,7 @@ export const PostContainer = styled.main`
     max-width: 800px;
   }
   margin-top: 100px;
+  margin-bottom: 150px;
   background-color: #fafafa;
 `
 

@@ -1,17 +1,21 @@
 import styled from 'styled-components'
 
 export const Container = styled.main`
-  min-height: calc(100vh - 60px);
+  min-height: 115vh;
+  @media (min-width: 768px) {
+    min-height: calc(100vh - 60px);
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 20px;
   .user-info {
-    margin-top: 200px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-top: 70px;
     @media (min-width: 768px) {
+      margin-top: 150px;
       flex-direction: row;
     }
     .works-container {

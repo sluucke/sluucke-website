@@ -5,6 +5,8 @@ export const PortfolioWorks: Portfolio[] = [
     id: 1,
     title: 'UrStyle E-Commerce',
     description: 'UI/UX Front-end development & Backend development',
+    long_description:
+      'In this project, I had developed an e-commerce website for a fashion brand(fictional). The website was developed using Next.JS at frontend, in backend I tested the serverless backend of Next.JS and for payment I used PayPal.',
     slug: 'ur-style-ecommerce',
     url: 'https://ur-style.vercel.app/',
     github_repository: {
@@ -22,20 +24,22 @@ export const PortfolioWorks: Portfolio[] = [
       'MongoDB',
     ],
     date: '27/10/2021',
-    mainColor: '#6E2887',
+    mainColor: '#9d03fc',
   },
   {
     id: 2,
     title: 'Ilusion - Roleplay',
     description: 'UI/UX Front-end development & Backend development',
-    slug: 'ur-style-ecommerce',
+    long_description:
+      'In this project, I had developed an allow list system with the game FiveM. The user needs to register on the website before join into the game.',
+    slug: 'ilusion-rp',
     url: 'https://ilusionrp.com/',
     github_repository: {
       url: '',
       name: '',
     },
     doneIn: '2 weeks',
-    image: '',
+    image: 'https://i.imgur.com/D2XgfYX.png',
     tags: [
       'React',
       'Next.js',
@@ -46,6 +50,6 @@ export const PortfolioWorks: Portfolio[] = [
       'PostgreSQL',
     ],
     date: '09/04/2022',
-    mainColor: '#00bcd4',
+    mainColor: '#fcba03',
   },
 ]
