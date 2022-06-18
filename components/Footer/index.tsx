@@ -24,7 +24,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterGridContainer>
         <div>
-          <FooterTitle>{'Like it my job? Let’s talk'}</FooterTitle>
+          <FooterTitle>{'Like my job? Let’s talk'}</FooterTitle>
           <FooterText>sluuckejoohn@gmail.com</FooterText>
         </div>
         <FooterLinksContainer>
