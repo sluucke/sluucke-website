@@ -3,7 +3,7 @@ title: 'TUTORIAL: How to implement NextJS + Typescript'
 date: '18/06/2022'
 author:
   name: 'David W.'
-short_description: 'In this tutorial we we will learn how to implement Next.js + Typescript in a simple project.'
+short_description: 'In this tutorial we will learn how to implement Next.js + Typescript in a simple project.'
 image: 'https://i.imgur.com/dE2BlN0.png'
 ---
 
