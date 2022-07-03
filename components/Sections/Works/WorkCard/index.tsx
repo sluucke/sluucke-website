@@ -1,28 +1,23 @@
 import useOnScreen from '@/utils/useOnScreen'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { CSSProperties } from 'styled-components'
 import { Portfolio } from '../../../../interfaces/Portfolio'
 import { Button } from '../../../reusables/Button'
 import { WorkCardContainer, WorkDescription, WorkTitle } from './styles'
-
-interface Work {
-  title: string
-  description: string
-  image?: string
-  link: string
-  mainColor: string
-}
 
 interface WorkCardProps {
   work: Portfolio
   animation?: boolean
   animationDelay?: string
+  style?: CSSProperties
 }
 
 const WorkCard = ({
   work,
   animationDelay = '-50px',
   animation = true,
+  style
 }: WorkCardProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const isContainerVisible = useOnScreen(containerRef, animationDelay)
@@ -32,6 +27,7 @@ const WorkCard = ({
       isVisible={isContainerVisible}
       animation={animation}
       mainColor={work.mainColor}
+      style={{...style}}
     >
       <WorkTitle>{work.title}</WorkTitle>
       <WorkDescription>{work.description}</WorkDescription>

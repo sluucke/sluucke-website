@@ -4,11 +4,11 @@ import { Portfolio } from '../../../interfaces/Portfolio'
 import { Container, FeaturedWorksContainer } from './styles'
 import WorkCard from './WorkCard'
 
-interface FreatureWorksProps {
+interface FreaturedWorksProps {
   portfolio: Portfolio[]
 }
 
-const FeaturedWorks = ({ portfolio }: FreatureWorksProps) => {
+const FeaturedWorks = ({ portfolio }: FreaturedWorksProps) => {
   return (
     <Container>
       <Text>featured works</Text>
@@ -16,7 +16,11 @@ const FeaturedWorks = ({ portfolio }: FreatureWorksProps) => {
 
       <FeaturedWorksContainer>
         {portfolio.slice(0, 4).map((work, index) => (
-          <WorkCard key={String(index + 1)} work={work} />
+          <WorkCard
+            key={String(index + 1)}
+            work={work}
+            style={{ width: '100%' }}
+          />
         ))}
       </FeaturedWorksContainer>
     </Container>

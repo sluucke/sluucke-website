@@ -8,6 +8,7 @@ import { BlogContainer } from '@/styles/pages/blog'
 import { Post } from '@/interfaces/Post'
 import { Container } from '@/components/reusables/Container'
 import PostsService from '@/services/PostsService'
+import Footer from '@/components/Footer'
 
 interface BlogProps {
   posts: Post[]
@@ -26,6 +27,7 @@ export default function Blog({ posts }: BlogProps) {
           ))}
         </BlogContainer>
       </Container>
+      <Footer />
     </>
   )
 }

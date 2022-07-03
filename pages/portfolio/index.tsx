@@ -5,21 +5,24 @@ import { Container } from '@/components/reusables/Container'
 import { Text } from '@/components/reusables/Text'
 import { Title } from '@/components/reusables/Title'
 import WorkCard from '@/components/Sections/Works/WorkCard'
+import { GithubRepositoryInterface } from '@/interfaces/GithubRepository'
 import { Portfolio } from '@/interfaces/Portfolio'
+import GithubService from '@/services/GithubService'
 import PortfolioService from '@/services/PortfolioService'
 import {
-  // GithubRepositoriesContainer,
+  GithubRepositoriesContainer,
   RecentWorksContainer,
   WorksCardContainer,
 } from '@/styles/pages/portfolio'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import { useEffect, useRef } from 'react'
 
 interface PortfolioWorksProps {
   works: Portfolio[]
+  repositories: GithubRepositoryInterface[]
 }
 
-const PortfolioWorks = ({ works }: PortfolioWorksProps) => {
+const PortfolioWorks = ({ works, repositories }: PortfolioWorksProps) => {
   const worksContainer = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -46,25 +49,34 @@ const PortfolioWorks = ({ works }: PortfolioWorksProps) => {
           <Title>Checkout my most recent jobs</Title>
           <WorksCardContainer ref={worksContainer}>
             {works.map((work) => (
-              <WorkCard key={work.id} work={work} animation={false} />
+              <WorkCard
+                key={work.id}
+                work={work}
+                animation={false}
+                style={{ width: '100%' }}
+              />
             ))}
           </WorksCardContainer>
         </RecentWorksContainer>
-        {/* <GithubRepositoriesContainer>
+        <GithubRepositoriesContainer>
           <Text>repositories</Text>
           <Title>My Github repositories :D</Title>
-          <RepositoryList />
-        </GithubRepositoriesContainer> */}
+          <RepositoryList repositories={repositories} />
+        </GithubRepositoriesContainer>
       </Container>
       <Footer />
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps<PortfolioWorksProps> = async () => {
+export const getServerSideProps: GetServerSideProps<
+  PortfolioWorksProps
+> = async () => {
+  const githubRepositories = (await GithubService.getAllRepositories()).data
   return {
     props: {
       works: PortfolioService.getAll(),
+      repositories: githubRepositories,
     },
   }
 }
