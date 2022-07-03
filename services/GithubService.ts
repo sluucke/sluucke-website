@@ -1,6 +1,6 @@
 import { GithubRepositoryInterface } from '@/interfaces/GithubRepository'
 import { AxiosResponse } from 'axios'
-import { GenericService } from './genericService'
+import { GenericService } from './GenericService'
 
 class GithubService extends GenericService {
   constructor() {
