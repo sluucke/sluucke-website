@@ -95,4 +95,16 @@ export const MarkdownStyles = styled(ReactMarkdown)`
     background-color: #000;
     color: #fff;
   }
+
+  & > hr {
+    border-bottom: 0;
+    border-color: #fff;
+    height: 0;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .codeStyle {
+    background: #000 !important;
+  }
 `

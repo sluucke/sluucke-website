@@ -21,15 +21,24 @@ interface PostProps {
 }
 export default function BlogPost({ post }: PostProps) {
   const postContainer = useRef<HTMLElement>(null)
+  const postTitle = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
     const animate = async () => {
-      if (postContainer.current) {
+      if (postContainer.current && postTitle.current) {
         const scrollReveal = (await import('scrollreveal')).default
         scrollReveal().reveal(postContainer.current, {
           duration: 1000,
           easing: 'ease-in-out',
           delay: 500,
+          reset: false,
+        })
+        scrollReveal().reveal(postTitle.current, {
+          duration: 1000,
+          distance: '10px',
+          delay: 500,
+          origin: 'top',
+          viewFactor: 0.5,
           reset: false,
         })
       }
@@ -39,19 +48,18 @@ export default function BlogPost({ post }: PostProps) {
   return (
     <>
       <Header title={`${post.title} | David William`} />
+      <PostInfo>
+        <PostTitle ref={postTitle}>{post.title}</PostTitle>
+        {/* <PostDescription>{post.short_description}</PostDescription> */}
+        {/* <PostAuthor>{post.author.name}</PostAuthor> */}
+        {/* <PostDate> */}
+        {/* <> */}
+        {/* {post.date} • {post.time_to_read.text} */}
+        {/* </> */}
+        {/* </PostDate> */}
+      </PostInfo>
       <PostContainer ref={postContainer}>
-        <PostInfo>
-          <PostImage src={post.image} />
-          <PostTitle>{post.title}</PostTitle>
-          <PostDescription>{post.short_description}</PostDescription>
-          <PostAuthor>{post.author.name}</PostAuthor>
-          <PostDate>
-            <>
-              {post.date} • {post.time_to_read.text}
-            </>
-          </PostDate>
-        </PostInfo>
-
+        <PostImage src={post.image} />
         <ReactMarkdown components={MarkdownComponents}>
           {post.content}
         </ReactMarkdown>

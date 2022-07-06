@@ -6,7 +6,7 @@ import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { dracula, materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 SyntaxHighlighter.registerLanguage('tsx', tsx)
 SyntaxHighlighter.registerLanguage('typescript', typescript)
@@ -41,7 +41,7 @@ const MarkdownComponents: object = {
 
     return match ? (
       <SyntaxHighlighter
-        style={dracula}
+        style={materialDark}
         language={match[1]}
         PreTag="div"
         className="codeStyle"
