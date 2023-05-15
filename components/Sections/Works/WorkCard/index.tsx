@@ -1,33 +1,46 @@
-import useOnScreen from '@/utils/useOnScreen'
-import Link from 'next/link'
-import { useRef } from 'react'
-import { CSSProperties } from 'styled-components'
-import { Portfolio } from '../../../../interfaces/Portfolio'
-import { Button } from '../../../reusables/Button'
-import { WorkCardContainer, WorkDescription, WorkTitle } from './styles'
+import useOnScreen from "@/utils/useOnScreen";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { CSSProperties } from "styled-components";
+import { Portfolio } from "../../../../interfaces/Portfolio";
+import { Button } from "../../../reusables/Button";
+import { WorkCardContainer, WorkDescription, WorkTitle } from "./styles";
 
 interface WorkCardProps {
-  work: Portfolio
-  animation?: boolean
-  animationDelay?: string
-  style?: CSSProperties
+  work: Portfolio;
+  animation?: boolean;
+  animationDelay?: string;
+  style?: CSSProperties;
 }
 
 const WorkCard = ({
   work,
-  animationDelay = '-50px',
+  animationDelay = "-50px",
   animation = true,
-  style
+  style,
 }: WorkCardProps) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const isContainerVisible = useOnScreen(containerRef, animationDelay)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isContainerVisible = useOnScreen(containerRef, animationDelay);
+  const [canAnimate, setCanAnimate] = useState(animation);
+
+  useEffect(() => {
+    if (isContainerVisible) {
+      if (canAnimate) {
+        console.log("animate");
+        setTimeout(() => {
+          setCanAnimate(false);
+        }, 2000);
+      }
+    }
+  }, [isContainerVisible]);
+
   return (
     <WorkCardContainer
       ref={containerRef}
       isVisible={isContainerVisible}
-      animation={animation}
+      animation={canAnimate}
       mainColor={work.mainColor}
-      style={{...style}}
+      style={{ ...style }}
     >
       <WorkTitle>{work.title}</WorkTitle>
       <WorkDescription>{work.description}</WorkDescription>
@@ -54,7 +67,7 @@ const WorkCard = ({
         </Link>
       </Button>
     </WorkCardContainer>
-  )
-}
+  );
+};
 
-export default WorkCard
+export default WorkCard;

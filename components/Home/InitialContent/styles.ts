@@ -99,6 +99,8 @@ export const ContactContainer = styled.div`
 `
 
 export const Button = styled.button`
+  appearance: none;
+  border: none;
   background-color: ${({ theme }) => theme.colors.black};
   border-radius: 999px;
   padding: 40px 40px;

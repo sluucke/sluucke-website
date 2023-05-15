@@ -1,6 +1,7 @@
-import Link from 'next/link'
-import { BsArrow90DegUp } from 'react-icons/bs'
-import { FiArrowUp } from 'react-icons/fi'
+import { UserMock } from "@/mock/user.mock";
+import Link from "next/link";
+import { BsArrow90DegUp } from "react-icons/bs";
+import { FiArrowUp } from "react-icons/fi";
 import {
   BacktotopButton,
   FooterContainer,
@@ -14,18 +15,20 @@ import {
   MadeByText,
   RightColumnContainer,
   SocialsTitle,
-} from './styles'
+} from "./styles";
 
 const Footer = () => {
   const backToTop = () => {
-    window.scroll({ top: 0, behavior: 'smooth' })
-  }
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
   return (
     <FooterContainer>
       <FooterGridContainer>
         <div>
-          <FooterTitle>{'Like my job? Let’s talk'}</FooterTitle>
-          <FooterText>sluuckejoohn@gmail.com</FooterText>
+          <FooterTitle>{"Like my job? Let’s talk"}</FooterTitle>
+          <FooterText as="a" href={UserMock.socials.email}>
+            {UserMock.email}
+          </FooterText>
         </div>
         <FooterLinksContainer>
           <FooterSocials>
@@ -74,28 +77,28 @@ const Footer = () => {
       </FooterGridContainer>
       <MadeByText>Made by David W.</MadeByText>
     </FooterContainer>
-  )
-}
+  );
+};
 
 const SOCIALS_LINK_MOCK = [
   {
     id: 1,
-    name: 'Instagram',
-    link: 'https://www.instagram.com/sluucke',
-    icon: 'instagram',
+    name: "Instagram",
+    link: UserMock.socials.instagram,
+    icon: "instagram",
   },
   {
     id: 2,
-    name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/david-william-a8a8b817b/',
-    icon: 'linkedin',
+    name: "LinkedIn",
+    link: UserMock.socials.linkedin,
+    icon: "linkedin",
   },
   {
     id: 3,
-    name: 'Github',
-    link: 'https://github.com/sluucke',
-    icon: 'github',
+    name: "Github",
+    link: UserMock.socials.github,
+    icon: "github",
   },
-]
+];
 
-export default Footer
+export default Footer;

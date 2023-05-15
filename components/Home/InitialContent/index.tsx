@@ -1,20 +1,21 @@
-import { Title, Text, Container, ContactContainer, Button } from './styles'
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
-import { BsArrowRight } from 'react-icons/bs'
-import { useEffect, useRef } from 'react'
+import { Title, Text, Container, ContactContainer, Button } from "./styles";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { BsArrowRight } from "react-icons/bs";
+import { useEffect, useRef } from "react";
 // @ts-ignore
-import CircleType from 'circletype'
-import Link from 'next/link'
+import CircleType from "circletype";
+import Link from "next/link";
+import { UserMock } from "@/mock/user.mock";
 
 const InitialContent = () => {
-  const circleInstance = useRef<HTMLParagraphElement>(null)
-  const initialContentSection = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const subtitleRef = useRef<HTMLHeadingElement>(null)
+  const circleInstance = useRef<HTMLParagraphElement>(null);
+  const initialContentSection = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     if (circleInstance.current !== undefined) {
-      new CircleType(circleInstance.current).radius(70)
+      new CircleType(circleInstance.current).radius(70);
     }
     const animate = async () => {
       if (
@@ -22,53 +23,55 @@ const InitialContent = () => {
         titleRef.current !== null &&
         subtitleRef.current !== null
       ) {
-        const scrollReveal = (await import('scrollreveal')).default
+        const scrollReveal = (await import("scrollreveal")).default;
         scrollReveal().reveal(initialContentSection.current, {
           duration: 1000,
           delay: 500,
-          distance: '0px',
-          easing: 'ease-in-out',
+          distance: "0px",
+          easing: "ease-in-out",
           reset: false,
-        })
+        });
         scrollReveal().reveal(titleRef.current, {
           duration: 1000,
-          distance: '50px',
+          distance: "50px",
           delay: 500,
-          origin: 'bottom',
+          origin: "bottom",
           viewFactor: 0.5,
           reset: false,
-        })
+        });
 
         scrollReveal().reveal(subtitleRef.current, {
           duration: 1000,
-          distance: '20px',
+          distance: "20px",
           delay: 800,
-          origin: 'bottom',
+          origin: "bottom",
           viewFactor: 0.5,
           reset: false,
-        })
+        });
         scrollReveal().reveal(
-          '.icons',
+          ".icons",
           {
             duration: 1000,
-            distance: '10px',
+            distance: "10px",
             delay: 1000,
-            origin: 'bottom',
+            origin: "bottom",
             viewFactor: 0.5,
             reset: false,
           },
           1000
-        )
+        );
       }
-    }
-    animate()
-  }, [])
+    };
+    animate();
+  }, []);
   return (
     <Container ref={initialContentSection}>
       <div className="user-info">
         <div>
-          <Title ref={titleRef}>David William</Title>
-          <Text ref={subtitleRef}>Full Stack developer</Text>
+          <Title ref={titleRef}>
+            {UserMock.firstName}&nbsp;{UserMock.secondName}
+          </Title>
+          <Text ref={subtitleRef}>{UserMock.occupation}</Text>
         </div>
         <div className="works-container">
           <Link href="/portfolio">
@@ -82,11 +85,11 @@ const InitialContent = () => {
         </div>
       </div>
       <ContactContainer>
-        <p>sluuckejoohn@gmail.com</p>
+        <p>{UserMock.email}</p>
         <div className="icons">
           <a
             className="social-link"
-            href="https://github.com/sluucke"
+            href={UserMock.socials.github}
             target="_blank"
             rel="noreferrer"
           >
@@ -94,7 +97,7 @@ const InitialContent = () => {
           </a>
           <a
             className="social-link"
-            href="https://www.linkedin.com/in/david-william-8070b41b0/"
+            href={UserMock.socials.linkedin}
             target="_blank"
             rel="noreferrer"
           >
@@ -102,7 +105,7 @@ const InitialContent = () => {
           </a>
           <a
             className="social-link"
-            href="mailto:sluuckejoohn@gmail.com"
+            href={`${UserMock.socials.email}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -111,7 +114,7 @@ const InitialContent = () => {
         </div>
       </ContactContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default InitialContent
+export default InitialContent;
